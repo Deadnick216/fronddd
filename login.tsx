@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Input, Text } from 'react-native-elements';
-import 'text-encoding-polyfill';
-import Joi from 'joi';
 import { useNavigation } from '@react-navigation/native';
 import useStore from '../stores/useStore';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../Router';
+import 'text-encoding-polyfill';
+import Joi from 'joi';
 
 const loginSchema = Joi.object({
   user: Joi.string().min(1).max(10),
@@ -51,6 +51,10 @@ const Login = () => {
     // const response = await loginService(payload);
   };
 
+  const goToPasswordRecovery = () => {
+    navigation.navigate("RecuperarContra"); // Navegar a la pantalla de recuperación de contraseña
+  };
+
   return (
     <View
       style={{
@@ -85,6 +89,7 @@ const Login = () => {
         onChangeText={(value: string) => setPassword(value)}
       />
       <Button title="Login" onPress={onLogin} loading={loading} />
+      <Button title="Recuperar Contraseña" onPress={goToPasswordRecovery} /> 
       <View
         style={{
           flexDirection: 'column',

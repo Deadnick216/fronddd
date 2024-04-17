@@ -1,5 +1,6 @@
 import { Box } from 'native-base';
 import useStore from '../stores/useStore';
+import { Text } from 'native-base';
 
 const Home = () => {
   const { user } = useStore();
@@ -13,7 +14,7 @@ const Home = () => {
         marginVertical: '10%',
       }}
     >
-      Hello world! {user}
+      <Text>Hello world!{user}</Text>
     </Box>
   );
 };
